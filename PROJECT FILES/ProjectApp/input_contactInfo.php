@@ -28,36 +28,38 @@ $dbname = "tac";
 
   //insert new contact information
   $addContact = "INSERT INTO `ContactInfo`(`projectID`, `firstName`, `lastName`, `street`, `city`, `state`, `zip`, `email`, `dayPhone`)
-      VALUES ('$last_id', '$_POST[first]', '$_POST[last]', '$_POST[cStreet]', '$_POST[cCity]', '$_POST[cState]', '$_POST[cZip]', '$_POST[cEmail]', '$_POST[cPhone]')";
+                 VALUES ('$last_id', '$_POST[first]', '$_POST[last]', '$_POST[cStreet]', '$_POST[cCity]', '$_POST[cState]', '$_POST[cZip]', '$_POST[cEmail]', '$_POST[cPhone]')";
 
   $conn->exec($addContact);
 
-  //echo "Contact Info added successfully."
+  //echo "Contact Info added successfully"
 
+  $success = true;
+  $passErr ='';
   //encrypt password
   $enc = openssl_encrypt('$_POST[password]','aes128','aRTSaPPcrYPT');
+  //created successfully!
+  //echo "encrypted pw:  ".$enc;
+
 
   if($enc == FALSE){
     $passErr = 'Password could not be stored';
     $success = false;
   }
-  //echo "password created?   ".$success;
-
 
   if($success == true){
     //store email and encrypted password in table
-    $loginSql = " INSERT INTO `Login`(`email`, `password`) VALUES
-                  ('$_POST[cEmail]', '$enc')"
+    $loginSql = "INSERT INTO `Login`(`email`, `password`) VALUES
+                  ('$_POST[cEmail]', '$enc')";
     $conn->exec($loginSql);
-    echo "Login added successfully. "."Enc Pass: ".$enc;
+    //echo "Login added successfully. "."Enc Pass: ".$enc;
   }
 
   //create cookie here?
 
   $conn = null;
 
-
-  //header("Location: /generalInfo.php");
+  header("Location: /generalInfo.php");
 //}
 
 //catch(PDOException $e){
