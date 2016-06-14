@@ -23,7 +23,6 @@ $dbname = "tac";
   $last_id = $conn->lastInsertId();
 
   //echo "Project Title:  ".$_POST[projTitle]."  Project ID is: ".$last_id;
-
   //echo "".$last_id.", ".$_POST[first].", ".$_POST[last].", ".$_POST[cStreet].", ".$_POST[cCity].", ".$_POST[cState].", ".$_POST[cZip].", ".$_POST[cEmail].", ".$_POST[cPhone];
 
   //insert new contact information
@@ -38,9 +37,6 @@ $dbname = "tac";
   $passErr ='';
   //encrypt password
   $enc = openssl_encrypt('$_POST[password]','aes128','aRTSaPPcrYPT');
-  //created successfully!
-  //echo "encrypted pw:  ".$enc;
-
 
   if($enc == FALSE){
     $passErr = 'Password could not be stored';
@@ -55,7 +51,7 @@ $dbname = "tac";
     //echo "Login added successfully. "."Enc Pass: ".$enc;
   }
 
-  //create cookie here?
+  //create cookie here for application (using projectID)?
 
   $conn = null;
 
