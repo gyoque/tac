@@ -51,11 +51,18 @@ $dbname = "tac";
     //echo "Login added successfully. "."Enc Pass: ".$enc;
   }
 
-  //create cookie here for application (using projectID)?
-
   $conn = null;
 
-  header("Location: /generalInfo.php");
+
+  //create cookie here for application (using projectID)
+  $cookie_name = 'artsProject';
+  $project_id = $last_id;
+
+  setcookie($cookie_name, $project_id, time()+60*60*24, "/");
+
+  //continue to adding organization info
+  header("Location: /orgInfo.php");
+
 //}
 
 //catch(PDOException $e){
