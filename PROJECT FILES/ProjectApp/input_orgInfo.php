@@ -10,20 +10,27 @@ try{
   //echo "Connected successfully";
 
 
+  $project_id = $_COOKIE['artsProject'];
 
   //create organization infromation
-  $sql = " INSERT INTO `OrganizationInfo`(`orgName`, `officerFirst`, `officerLast`,
+  $insertOrg = " INSERT INTO `OrganizationInfo`(`orgName`, `officerFirst`, `officerLast`,
     `street`, `city`, `state`, `zip`, `phone`, `email`)
     VALUES ('$_POST[orgName]','$_POST[f_name]','$_POST[l_name]','$_POST[orgStreet]',
     '$_POST[orgCity]','$_POST[orgState]',$_POST[orgZip],$_POST[phone],'$_POST[email]') ";
 
-  $conn->exec($sql);
+  $conn->exec($insertOrg);
 
-  echo "Organization added successfully";
+  //associate the organization with the projectID
+  $assosProj = " INSERT INTO `OrgsProject`(`orgName`, `projectID`) VALUES ('$_POST[orgName]', $project_id) "
+
+  $conn->exec($assosProj)
 
   $conn = null;
 
-  //header("Location: /budget/orgOpBudget.php");
+  echo "Organization and project association added successfully";
+
+
+  //header("Location: /busStatus.php");
 
 }
 catch(PDOException $e){
