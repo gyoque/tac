@@ -27,10 +27,10 @@ try{
 
   $conn = null;
 
-  echo "Organization and project association added successfully";
+  //echo "Organization and project association added successfully";
 
 
-  //header("Location: /busStatus.php");
+  header("Location: /busStatus.php");
 
 }
 catch(PDOException $e){
