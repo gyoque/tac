@@ -5,7 +5,15 @@
 <h1>Budget</h1>
 Operational Operating Budget for the last three complete fiscal years
 
+//get current year, and get previous years
 
+<?php
+
+  $currentYear = date("Y");
+  $firstY = $currentYear - 3;
+  $secondY = $currentYear - 2;
+  $thirdY = $currentYear - 1;
+?>
 
 
 <form action="">
