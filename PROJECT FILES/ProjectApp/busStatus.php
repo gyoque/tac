@@ -13,10 +13,10 @@
   <br><br>
 
   Federal Employer Identification Number (EIN):
-  <input type="text" name="EIN"> <br>
+  <input type="text" name="ein"> <br>
 
   Unified Business Identifier Number (ubi):
-  <input type="text" name="UBI" > <br>
+  <input type="text" name="ubi" > <br>
 
   City of Tacoma Business License Number:
   <input type="text" name="tbl">
