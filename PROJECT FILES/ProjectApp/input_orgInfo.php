@@ -23,7 +23,7 @@ try{
   //associate the organization with the projectID
   $assosProj = " INSERT INTO `OrgsProject`(`orgName`, `projectID`) VALUES ('$_POST[orgName]', $project_id) "
 
-  $conn->exec($assosProj)
+  $conn->exec($assosProj);
 
   $conn = null;
 
